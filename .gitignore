@@ -1,0 +1,20 @@
+# Lean 构建产物（lake 自动生成，体积大且可重建）
+.lake/
+lake-packages/
+*.olean
+*.ilean
+
+# 临时产物目录（预览、脚本输出、调试快照等），不入库
+tmp/
+
+# 环境文件（只入库 .env.example 模板）
+.env
+.env.*
+!.env.example
+settings.local.json
+
+# 系统与语言杂项
+.DS_Store
+__pycache__/
+node_modules/
+artifacts/

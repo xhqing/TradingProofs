@@ -1,0 +1,25 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+## [Unreleased]
+
+## [0.1.0] - 2026-10-11
+
+### Added
+
+- **建立本仓库（DayTradingAgent 子项目，负责人 Victor）**：把交易数学做成 Lean 4 + Mathlib 的机器可验证证明，与实盘执行完全隔离。首个目标为父项目 `notes/cumulative-return-derivation.md`（固定比例下注下的累计收益率推导）。
+- **核心定理链已机器验证**（Lean `v4.35.0-rc4` / Mathlib `2da3ab0a`；`lake build` 全绿（3037 项以上）、无 `sorry`、无警告）：
+  - `TradingProofs/Equity.lean`（§1–2）：`equity_succ` 单笔递推、`single_trade_return` 单笔收益率恒等于 `f·Rₙ`、`equity_pos` 不爆仓前提下的正性、`log_equity` 乘积的对数分解。
+  - `TradingProofs/Growth.lean`（§3–§6）：`tendsto_log_mean` 对数收益均值的强大数定律（几乎必然收敛到 `g`）、`tendsto_prod_rpow_logGrowthRate` 几何增长率（`(∏(1+fRᵢ))^(1/n) → e^g` a.s.）、`eventually_equity_ge_exp`（`g>0` 时对任意 `c<g` 最终 `≥ W₀·e^{cn}`）与 `eventually_equity_le_exp`（`g<0` 时对任意 `g<c<0` 最终 `≤ W₀·e^{cn}`）。
+- 项目脚手架：README 中英双语 + LOGO + 徽章、MIT LICENSE、CHANGELOG、VERSION、TODO、`.gitignore`、GitHub Actions CI（`lean-action` + Mathlib 缓存）、反例扫描脚本 `scripts/twice-kelly-scan.py`。
+- **立项前的可行性核对（2026-10-11，实测）**：① 用 Loogle 核实 Mathlib 现成支柱（`ProbabilityTheory.strong_law_ae` 强大数定律、`strictConcaveOn_log_Ioi`、`ConcaveOn.le_map_sum`、`Real.abs_log_sub_add_sum_range_le` 泰勒余项界等）；② 数值复核源文档 §7.3 的 `f_crit = 2f*` 结论：文档例子中 `g(2f*) = −0.41% ≠ 0`（源文档自身也标注「近似形式下」），且随机扫描 50 万组两结果参数（其中约 25 万组满足 EV > 0 且 f* 可行）发现约 20% 的参数下真实临界点 `f_c > 2f*`，最极端一组 `f_c ≈ 2.19 × (2f*)` 且 `g(2f*) ≈ +0.242 > 0`——即「超过两倍凯利必然缩水」在离散两结果模型里**不是普遍成立的**，形式化时必须写成带条件的命题。
+
+### Changed
+
+- 父项目 `notes/cumulative-return-derivation.md` 的两处口径修正已落地（§3 不等式改渐近形式、§7.3 补边界与反例、附录二补核对脚本），记录在 DayTradingAgent 仓库的 CHANGELOG（2026-10-11 条）。
+
+### Notes（构建环境备忘）
+
+- 本仓库按需拉取 Mathlib 缓存：`lake exe cache get Mathlib/Probability/StrongLaw.lean` 只下依赖闭包（~2766 个 olean、~2.4 GB），比全量缓存省不少磁盘；闭包覆盖率用脚本统计（StrictLaw 的传递依赖约占 Mathlib 全库 32%）。
+
