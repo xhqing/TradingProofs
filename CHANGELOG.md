@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Notes（构建环境备忘）
+
+- **踩坑（2026-10-11 实测）**：`lake update` 会触发 Mathlib 的 `post_update` 钩子、自动执行**全量** `lake exe cache get`（9023 个缓存文件）——本机首次立项时三分钟就把磁盘吃到只剩 1.4 GB（任务已主动中止，随后清理未完成产物）。**官方逃生口**（已核实 Mathlib `lakefile.lean` 源码第 191 行）：`MATHLIB_NO_CACHE_ON_UPDATE=1 lake update` 可整段跳过该钩子，之后按需增量拉取。磁盘紧张环境下建议始终带这个环境变量跑 `lake update`。
+
 ## [0.1.0] - 2026-10-11
 
 ### Added
@@ -22,4 +26,5 @@ All notable changes to this project will be documented in this file.
 ### Notes（构建环境备忘）
 
 - 本仓库按需拉取 Mathlib 缓存：`lake exe cache get Mathlib/Probability/StrongLaw.lean` 只下依赖闭包（~2766 个 olean、~2.4 GB），比全量缓存省不少磁盘；闭包覆盖率用脚本统计（StrictLaw 的传递依赖约占 Mathlib 全库 32%）。
+
 
