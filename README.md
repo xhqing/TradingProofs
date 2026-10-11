@@ -38,6 +38,8 @@ The source derivation is [notes/cumulative-return-derivation.md](https://github.
 | 6 | Exact two-outcome Kelly `f*` and the positive-growth interval | §6–7 | planned |
 | 7 | The exact/approximate boundary of "twice Kelly" | §7.3 | planned |
 
+The full human-readable derivation — every proven result written out with LaTeX and mapped to its Lean theorem — is in [docs/proofs.md](docs/proofs.md).
+
 ## Build
 
 ```bash

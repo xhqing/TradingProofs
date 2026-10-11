@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Added（docs/proofs.md：已证结论的可读推导，2026-10-11）
+
+- 新增 `docs/proofs.md`：把已机器验证的结论（§1–§6 共 9 条）写成带 LaTeX 公式的人类可读推导——每条标注对应的 Lean 定理名与用到的前提（H1–H5），并列出未覆盖的边界（§4 泰勒余项、§7 凯利最优、§7.3 两倍凯利 → TODO T4–T6）；README 中英双语同步加链接。
+
 ## [0.1.1] - 2026-10-11
 
 ### Notes（构建环境备忘）
