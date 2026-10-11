@@ -55,6 +55,8 @@ The toolchain is pinned in `lean-toolchain`, Mathlib in `lake-manifest.json`. CI
 - No "≈" in theorem statements: approximations appear only as explicit remainder bounds or `IsBigO` asymptotics.
 - Numerics quoted in comments or docs are reproduced by a script under `scripts/`.
 
-## License
+## License & Attribution
 
-MIT
+Copyright (c) 2026 All Contributors. Released under the [MIT License](LICENSE.md).
+
+Attribution: if you use or reference this project, please keep the copyright notice and credit the source: [TradingProofs](https://github.com/xhqing/TradingProofs).

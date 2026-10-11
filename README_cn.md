@@ -55,6 +55,8 @@ lake build
 - 定理陈述里不出现「≈」：近似只以显式余项界或 `IsBigO` 渐近式的形式出现。
 - 注释与文档里引用的数字都由 `scripts/` 下的脚本复算。
 
-## 许可证
+## 版权与署名
 
-MIT
+Copyright (c) 2026 All Contributors。基于 [MIT License](LICENSE.md) 发布。
+
+署名：使用或引用本项目时，请保留版权声明并注明来源：[TradingProofs](https://github.com/xhqing/TradingProofs)。
