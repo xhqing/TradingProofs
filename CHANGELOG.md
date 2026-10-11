@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [0.1.2] - 2026-10-11
 
 ### Added（docs/proofs.md：已证结论的可读推导，2026-10-11）
 
