@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [0.1.3] - 2026-10-12
 
 ### Changed（智能体专属文件清理：随附指南迁入 README，2026-10-12）
 
