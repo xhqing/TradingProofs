@@ -2,7 +2,7 @@
   <img src="assets/logo.svg" alt="TradingProofs" width="640">
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow)](LICENSE.md)
-  [![Version](https://img.shields.io/badge/Version-0.1.0-blue)](CHANGELOG.md)
+  [![Version](https://img.shields.io/badge/Version-0.1.2-blue)](CHANGELOG.md)
   [![Type](https://img.shields.io/badge/Type-Formal%20Verification-4F46E5)](#)
   [![Visitors](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/xhqing/xhqing/main/traffic/badges/TradingProofs.json)](https://github.com/xhqing)
 
@@ -53,8 +53,10 @@ The toolchain is pinned in `lean-toolchain`, Mathlib in `lake-manifest.json`. CI
 
 ## Formalization rules
 
-- Every theorem carries its source section and its hypotheses — including `1 + f·Rᵢ > 0` (no wipeout; in the two-outcome model `f·|R_L| < 1`) and integrability of `ln(1 + f·R)`.
+- Every theorem carries its source section and its hypotheses — `W₀ > 0`, `1 + f·Rᵢ > 0` (no wipeout; in the two-outcome model `f·|R_L| < 1`), and integrability of `ln(1 + f·R)` (needed for the strong law).
 - No "≈" in theorem statements: approximations appear only as explicit remainder bounds or `IsBigO` asymptotics.
+- "Twice Kelly"-style claims ("beyond `2f*` the growth rate is negative") are formalized only as conditional or error-bounded statements — never as universal assertions; the discrete two-outcome counterexample above shows why.
+- Theorems are pinned to their stated assumptions; whether those assumptions match real markets (independent returns, constant `f`, costs and slippage) is discussed in the documentation, never mixed into theorem statements.
 - Numerics quoted in comments or docs are reproduced by a script under `scripts/`.
 
 ## License & Attribution

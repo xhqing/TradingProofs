@@ -2,7 +2,7 @@
   <img src="assets/logo.svg" alt="TradingProofs" width="640">
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow)](LICENSE.md)
-  [![Version](https://img.shields.io/badge/Version-0.1.0-blue)](CHANGELOG.md)
+  [![Version](https://img.shields.io/badge/Version-0.1.2-blue)](CHANGELOG.md)
   [![Type](https://img.shields.io/badge/Type-Formal%20Verification-4F46E5)](#)
   [![Visitors](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/xhqing/xhqing/main/traffic/badges/TradingProofs.json)](https://github.com/xhqing)
 
@@ -53,8 +53,10 @@ lake build
 
 ## 形式化纪律
 
-- 每个定理都注明出处章节与前提——包括不爆仓条件 `1 + f·Rᵢ > 0`（两结果模型即 `f·|R_L| < 1`）与 `ln(1 + f·R)` 的可积性。
+- 每个定理都注明出处章节与前提——`W₀ > 0`、不爆仓条件 `1 + f·Rᵢ > 0`（两结果模型即 `f·|R_L| < 1`）、`ln(1 + f·R)` 的可积性（强大数定律所需）。
 - 定理陈述里不出现「≈」：近似只以显式余项界或 `IsBigO` 渐近式的形式出现。
+- 「两倍凯利」类命题（「超过 `2f*` 增长率必为负」）只形式化为带条件或带误差界的版本，禁止全称断言——上文离散两结果模型的反例正说明原因。
+- 定理钉死的是「写明的假设 ⇒ 结论」；假设是否贴合真实市场（收益独立、`f` 恒定、成本与滑点）在文档里单独说明，不混进定理陈述。
 - 注释与文档里引用的数字都由 `scripts/` 下的脚本复算。
 
 ## 版权与署名

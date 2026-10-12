@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed（智能体专属文件清理：随附指南迁入 README，2026-10-12）
+
+- 按团队 2026-10-12 新规（智能体专属文件只有 Agent 项目允许拥有，非 Agent 项目一律不得存在），移除本仓库的 `CLAUDE.md` 与 `AGENTS.md`（指向 CLAUDE.md 的软链）。原「项目指南 + 父项目 CLAUDE.md 全文随附」中值得保留的形式化口径纪律已并入 README 中英双语「形式化纪律」节（补上 `W₀ > 0` 前提、可积性的用途说明、「两倍凯利」类命题只做带条件 / 带误差界形式、假设边界不混进定理陈述）；随附的父项目 CLAUDE.md 全文与过时的 `.claude/` 说明段直接删除。子项目的工作规则以父项目 DayTradingAgent 会话为准（细则见全局 `~/.claude/docs/agents-registry.md`「智能体专属文件归属与子项目映射（2026-10-12 修订）」节）。
+- 顺带修一处版本一致性漂移：两份 README 的 Version 徽章从 `0.1.0` 同步到当前 `VERSION`（`0.1.2`）——0.1.1 / 0.1.2 两次 bump 只改了 VERSION 与 CHANGELOG，徽章漏更新。
+
 ## [0.1.2] - 2026-10-11
 
 ### Added（docs/proofs.md：已证结论的可读推导，2026-10-11）
