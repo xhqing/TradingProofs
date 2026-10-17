@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed（全局权威源迁移对齐：TODO 头部规则指针更新，2026-10-17）
+
+- 全局能力源 2026-10-17 从 `~/.claude/` 迁至 `~/.pi/agent/`（见 `~/.claude/MOVED-TO-PI.md`），本仓库 `TODO.md` / `TODO-archive.md` 头部的全局规则指针同步改为 `~/.pi/agent/CLAUDE.md`。纯路径引用更新，规则内容不变。
+
 ## [0.1.4] - 2026-10-17
 
 ### Changed（智能体专属文件归属新规：挂两条指回父项目的软链接，2026-10-17）

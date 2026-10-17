@@ -1,6 +1,6 @@
 # TODO 归档
 
-> 已完成 / 已更新 / 已放弃的 TODO 条目归档。规则见全局 `~/.claude/CLAUDE.md`「待办（TODO）管理」节。
+> 已完成 / 已更新 / 已放弃的 TODO 条目归档。规则见全局 `~/.pi/agent/CLAUDE.md`「待办（TODO）管理」节。
 
 ## 已完成
 
