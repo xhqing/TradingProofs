@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed（智能体专属文件归属新规：挂两条指回父项目的软链接，2026-10-17）
+
+- 按团队 2026-10-17 用户修订（取代 2026-10-12 的「子项目不得有智能体专属文件」规则），在仓库根新增两条相对路径软链接：`AGENTS.md → ../DayTradingAgent/AGENTS.md`、`.pi → ../DayTradingAgent/.pi`（随仓库提交）——在子项目目录直接开会话即继承 Victor 的身份 / 规则 / 技能 / 扩展 / 设置（「Agent 进驻子项目」）。规则的权威来源仍是 DayTradingAgent 一份，本仓库不放置实体副本；形式化口径纪律仍在 README 中英双语「形式化纪律」节。细则见全局 `~/.claude/docs/agents-registry.md`「智能体专属文件归属与子项目映射（2026-10-17 修订）」节。
+
 ## [0.1.3] - 2026-10-12
 
 ### Changed（智能体专属文件清理：随附指南迁入 README，2026-10-12）
