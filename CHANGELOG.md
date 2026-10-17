@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [0.1.4] - 2026-10-17
 
 ### Changed（智能体专属文件归属新规：挂两条指回父项目的软链接，2026-10-17）
 
