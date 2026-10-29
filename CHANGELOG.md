@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed（`.pi` 由软链接改为真实目录 + 资源引用，2026-10-29）
+
+- **为什么改**：团队 2026-10-30 用户修订了子项目「智能体专属文件」的归属规则（见全局 `~/.pi/agent/docs/agents-registry.md`「智能体专属文件归属与子项目映射（2026-10-30 修订）」节）。旧做法把整个 `.pi` 挂成指向 DayTradingAgent 的软链接——好处是技能 / 扩展自动同步，坏处是本仓库**根本没法拥有自己的 pi 配置**：往 `.pi` 写任何东西都直接落进父项目的目录，影响父项目与全部兄弟子项目、并且进父项目的 git 历史。
+- **改了什么**：
+  - 删除 `.pi → ../DayTradingAgent/.pi` 软链接，换成真实目录 `.pi/`。
+  - 新增 `.pi/settings.json`：用路径把父项目的四个资源目录引用进来（`extensions` / `skills` / `prompts` / `themes`，内容即 `~/Developer/DayTradingAgent/.pi/<目录>`），再加本仓库自己的同名本地目录（`./extensions`、`./skills`、`./prompts`、`./themes`，当前尚未创建，以后有本地内容再建即可）。引用的是**目录**而不是逐个文件，父项目以后新增的技能 / 扩展会自动带过来、零同步动作；本仓库往自己的目录里写东西也不会再回流到父项目。
+  - `AGENTS.md` 软链接保持不动（仍指向 `../DayTradingAgent/AGENTS.md`）——它表征身份，必须与父项目一致，且 pi 的上下文文件机制没有 include，超集只能靠复制、复制必然漂移。
+- **验证（2026-10-29 实测）**：在本仓库目录跑 `pi --approve -p`，技能从父项目目录加载成功（可用技能含 `trade`）；项目级扩展同样生效（`AskUserQuestion` 工具存在）。
+- **纪律**：本仓库的 `.pi` 只允许追加自己的东西，不允许重述或覆盖父项目的基座规则（一旦重述就有两套说法、必然打架）；需要子项目专属规则时用 `.pi/APPEND_SYSTEM.md` 追加，不要用 `.pi/SYSTEM.md`（那是整体替换，会把 agent 身份冲掉）。
+- **边界**：`.pi/settings.json` 里写的是父项目的绝对路径（`~` 开头）——单独 clone 本仓库到别处时引用会失效（无害，仅表现为拿不到父项目的技能 / 扩展）；这是「本仓库是 DayTradingAgent 子项目」的显式关联标记，见全局规则第 3 条。
+
 ### Changed（全局权威源迁移对齐：TODO 头部规则指针更新，2026-10-17）
 
 - 全局能力源 2026-10-17 从 `~/.claude/` 迁至 `~/.pi/agent/`（见 `~/.claude/MOVED-TO-PI.md`），本仓库 `TODO.md` / `TODO-archive.md` 头部的全局规则指针同步改为 `~/.pi/agent/CLAUDE.md`。纯路径引用更新，规则内容不变。
