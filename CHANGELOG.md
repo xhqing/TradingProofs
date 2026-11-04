@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### 变更（移除访问量徽章，配合停用集中式流量采集）
+
+- **为什么改**：用户 2026-11-04 决定停用 xhqing 仓库的集中式访问量采集，同时不再在各仓库 README 展示访问量徽章。徽章的数据源必须由采集任务每天刷新，采集停掉之后徽章会冻结在旧值，而徽章文案写的是「Visits/day (14d)」——数字不再更新却仍显示成实时数据，留着反而误导读者。
+- **改了什么**：`README.md` / `README_cn.md` 顶部徽章区删除那一枚 shields.io 访问量徽章（整行删除，数据源 `https://raw.githubusercontent.com/xhqing/xhqing/main/traffic/badges/<仓库名>.json`）；License / Version / Type 等其它徽章与正文一个字未动。
+- **回归检查**：只删这一整行，徽章区所在的 `<p align="center">` / `<div>` 结构与相邻徽章不受影响；README 其余内容零改动。
+
 ### Changed（`.pi` 由软链接改为真实目录 + 资源引用，2026-10-29）
 
 - **为什么改**：团队 2026-10-30 用户修订了子项目「智能体专属文件」的归属规则（见全局 `~/.pi/agent/docs/agents-registry.md`「智能体专属文件归属与子项目映射（2026-10-30 修订）」节）。旧做法把整个 `.pi` 挂成指向 DayTradingAgent 的软链接——好处是技能 / 扩展自动同步，坏处是本仓库**根本没法拥有自己的 pi 配置**：往 `.pi` 写任何东西都直接落进父项目的目录，影响父项目与全部兄弟子项目、并且进父项目的 git 历史。
