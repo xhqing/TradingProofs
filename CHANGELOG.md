@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### 新增（子项目专属硬规则 `.pi/APPEND_SYSTEM.md`，对齐 Leader / Worker 分工）
+
+- **为什么改**：团队 2026-11-07 用户定下全局 Leader / Worker 分工——Agent 项目根的会话是 Leader（同步子项目 local main、建 worktree、派任务、收尾），子项目根 / 子项目 worktree 的会话是 Worker（干具体的活）。Worker 启动时只加载「全局 + cwd 这一层」的上下文文件，所以子项目特有的硬规则必须写进本仓库自己的 `.pi/APPEND_SYSTEM.md` 才能被 Worker 读到；写进父项目 `AGENTS.md` 会污染其它子项目。此前的口径是「子项目规则以父项目会话为准」，Worker 模型下不再成立。
+- **改了什么**：新增 `.pi/APPEND_SYSTEM.md`（仅追加、不动基线规则），只写本仓库特有约束：① 与实盘执行完全隔离（不产信号、不接证券账户、不碰凭证）；② Lean 工具链固定 + `lake exe cache get` / `lake build` 验证流程与 CI 门禁；③ 定理红线（已证定理的签名与假设不得削弱、禁 `sorry` / 新增 `axiom`、陈述里不许出现 `≈`、必标来源章节与假设、两倍凯利类只做条件表述）；④ 文档数值须由 `scripts/` 脚本复现 + 中英双语 README 同步 + 状态表口径一致；⑤ 构建产物与临时文件的位置。不重述全局与父项目的通用规则。
+- **回归检查**：纯新增文件，不改任何 Lean 源码、`.pi/settings.json`、README 或 CI 配置；`lake build` 不受影响。`AGENTS.md` 软链接、`.pi` 目录引用关系保持原样。
+
 ### 变更（移除访问量徽章，配合停用集中式流量采集）
 
 - **为什么改**：用户 2026-11-04 决定停用 xhqing 仓库的集中式访问量采集，同时不再在各仓库 README 展示访问量徽章。徽章的数据源必须由采集任务每天刷新，采集停掉之后徽章会冻结在旧值，而徽章文案写的是「Visits/day (14d)」——数字不再更新却仍显示成实时数据，留着反而误导读者。
