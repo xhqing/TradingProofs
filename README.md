@@ -60,6 +60,6 @@ The toolchain is pinned in `lean-toolchain`, Mathlib in `lake-manifest.json`. CI
 
 ## License & Attribution
 
-Copyright (c) 2026 All Contributors. Released under the [MIT License](LICENSE.md).
+Copyright (c) 2026 xhqing <https://github.com/xhqing>. Released under the [MIT License](LICENSE.md).
 
 Attribution: if you use or reference this project, please keep the copyright notice and credit the source: [TradingProofs](https://github.com/xhqing/TradingProofs).
