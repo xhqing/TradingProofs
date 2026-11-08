@@ -1,6 +1,6 @@
-# TradingProofs 子项目专属规则
+# TradingProofs · 项目硬约束
 
-本文件只写本仓库（Lean 4 + Mathlib 形式化证明）特有的硬约束。通用规则（提交流程、敏感信息、TODO / CHANGELOG、输出风格等）在父项目 DayTradingAgent 的 `AGENTS.md` 与全局 `~/.pi/agent/AGENTS.md` 里，此处不重述。
+本文件只写本仓库（Lean 4 + Mathlib 形式化证明）特有的硬约束。通用规则（提交流程、敏感信息、TODO / CHANGELOG、输出风格等）见本仓库根 `AGENTS.md` 与全局 `~/.pi/agent/AGENTS.md`，此处不重述。
 
 ## 1. 与实盘执行完全隔离
 
