@@ -1,6 +1,0 @@
-{
-  "extensions": ["~/Developer/DayTradingAgent/.pi/extensions", "./extensions"],
-  "skills": ["~/Developer/DayTradingAgent/.pi/skills", "./skills"],
-  "prompts": ["~/Developer/DayTradingAgent/.pi/prompts", "./prompts"],
-  "themes": ["~/Developer/DayTradingAgent/.pi/themes", "./themes"]
-}
