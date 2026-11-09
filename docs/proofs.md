@@ -2,7 +2,7 @@
 
 > **本文是什么**：把 `TradingProofs/Equity.lean` 与 `TradingProofs/Growth.lean` 里**已经过 Lean 4 + Mathlib 机器验证**的结论，用人类可读的数学推导写一遍，每条结论标注对应的 Lean 定理名与前提。
 >
-> **与源文档的关系**：非形式化的原始推导见 DayTradingAgent 仓库的 [`notes/cumulative-return-derivation.md`](https://github.com/xhqing/DayTradingAgent/blob/main/notes/cumulative-return-derivation.md)；本文只覆盖**已形式化**的部分，未覆盖的部分在 §7 列出。
+> **与源文档的关系**：非形式化的原始推导见 trading-agent 仓库的 [`notes/cumulative-return-derivation.md`](https://github.com/xhqing/trading-agent/blob/main/notes/cumulative-return-derivation.md)；本文只覆盖**已形式化**的部分，未覆盖的部分在 §7 列出。
 >
 > **构建状态**：Lean `v4.35.0-rc4` / Mathlib `2da3ab0a`，`lake build` 全绿（0 error、0 warning、无 `sorry`）。结论中的每一条都可以在源码里检索到同名定理。
 

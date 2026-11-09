@@ -1,12 +1,12 @@
 # TradingProofs
 
-> DayTradingAgent（Victor）名下的子项目 · 本项目规则本体
+> trading-agent（Victor）名下的子项目 · 本项目规则本体
 
 交易数学的 Lean 4 + Mathlib 机器可验证证明（从固定比例下注的累计收益率推导开始，覆盖强数定律指数增长率 / 凯利最优 f\* /「两倍凯利」边界）。与实盘执行完全隔离。
 
 ## 归谁负责
 
-本项目由 **Victor**（DayTradingAgent）负责维护。改动范围跨出本项目时，先向 Victor 说明，不自行扩张改动面。
+本项目由 **Victor**（trading-agent）负责维护。改动范围跨出本项目时，先向 Victor 说明，不自行扩张改动面。
 
 ## 你的角色
 

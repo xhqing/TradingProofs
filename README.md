@@ -10,18 +10,18 @@
 
 # TradingProofs
 
-Machine-checked proofs, in **Lean 4 + Mathlib**, of the trading math behind [DayTradingAgent](https://github.com/xhqing/DayTradingAgent) — the compounding and position-sizing formulas that decide how much capital each trade may risk.
+Machine-checked proofs, in **Lean 4 + Mathlib**, of the trading math behind [trading-agent](https://github.com/xhqing/trading-agent) — the compounding and position-sizing formulas that decide how much capital each trade may risk.
 
 ## Why this exists
 
-DayTradingAgent sizes every trade as a fixed fraction of pre-trade equity (`Mᵢ = f·Wᵢ₋₁`) and reads its long-run prospects off the log-growth rate `g = E[ln(1 + f·R)]`. Those derivations are what real sizing decisions stand on, which is exactly why they should not rest on a hand-waved "≈". Lean re-checks every step down to the axioms, and forces informal phrases like *"the product is approximately `e^{ng}`"* into precise statements with explicit hypotheses.
+trading-agent sizes every trade as a fixed fraction of pre-trade equity (`Mᵢ = f·Wᵢ₋₁`) and reads its long-run prospects off the log-growth rate `g = E[ln(1 + f·R)]`. Those derivations are what real sizing decisions stand on, which is exactly why they should not rest on a hand-waved "≈". Lean re-checks every step down to the axioms, and forces informal phrases like *"the product is approximately `e^{ng}`"* into precise statements with explicit hypotheses.
 
 The first review round (2026-10-11) already surfaced two claims that are not literally true and must be restated:
 
 - `∏(1 + f·Rᵢ) ≤ (1 + f·EV)ⁿ` holds only asymptotically, not term-by-term for every finite `n`;
 - "over-betting beyond twice Kelly always shrinks" is **false** in the discrete two-outcome model — there is an explicit numerical counterexample (`g(2f*) ≈ +0.24 > 0` for `p ≈ 0.104, R_W ≈ 17.7, |R_L| ≈ 0.05`), so it has to become a conditional or asymptotic statement.
 
-The source derivation is [notes/cumulative-return-derivation.md](https://github.com/xhqing/DayTradingAgent/blob/main/notes/cumulative-return-derivation.md) in the DayTradingAgent repository; both review findings have been corrected there (2026-10-11).
+The source derivation is [notes/cumulative-return-derivation.md](https://github.com/xhqing/trading-agent/blob/main/notes/cumulative-return-derivation.md) in the trading-agent repository; both review findings have been corrected there (2026-10-11).
 
 ## Status (0.1.0)
 

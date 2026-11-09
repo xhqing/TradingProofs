@@ -12,7 +12,7 @@ public import TradingProofs.Equity
 # Exponential growth of fixed-fraction equity (strong law of large numbers)
 
 Formalizes the core of §3–§6 of `notes/cumulative-return-derivation.md` in
-DayTradingAgent: the compounding product `∏ (1 + f·Rᵢ)` grows at geometric rate
+trading-agent: the compounding product `∏ (1 + f·Rᵢ)` grows at geometric rate
 `e^g` with `g = E[ln(1 + f·R)]`, and the sign of `g` decides growth vs decay.
 
 Stated hypotheses (all explicit):
