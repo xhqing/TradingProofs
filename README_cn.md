@@ -10,18 +10,18 @@
 
 # TradingProofs
 
-用 **Lean 4 + Mathlib** 把 [DayTradingAgent](https://github.com/xhqing/DayTradingAgent) 的交易数学做成机器可验证的证明——这些数学决定每笔交易能动用多少资金。
+用 **Lean 4 + Mathlib** 把 [trading-agent](https://github.com/xhqing/trading-agent) 的交易数学做成机器可验证的证明——这些数学决定每笔交易能动用多少资金。
 
 ## 为什么做这个
 
-DayTradingAgent 每笔按笔前权益的固定比例下注（`Mᵢ = f·Wᵢ₋₁`），并靠对数增长率 `g = E[ln(1 + f·R)]` 判断策略的长期前景。实盘仓位决策就站在这些推导之上——正因为如此，它们不该建立在「≈ 约等于」的口头保证上。Lean 会把每一步推理检查到公理级，并把「乘积大约等于 `e^{ng}`」这类口语表述逼成带明确前提的精确命题。
+trading-agent 每笔按笔前权益的固定比例下注（`Mᵢ = f·Wᵢ₋₁`），并靠对数增长率 `g = E[ln(1 + f·R)]` 判断策略的长期前景。实盘仓位决策就站在这些推导之上——正因为如此，它们不该建立在「≈ 约等于」的口头保证上。Lean 会把每一步推理检查到公理级，并把「乘积大约等于 `e^{ng}`」这类口语表述逼成带明确前提的精确命题。
 
 第一轮评审（2026-10-11）已经发现其中两处按字面不成立、必须改写的表述：
 
 - `∏(1 + f·Rᵢ) ≤ (1 + f·EV)ⁿ` 只在渐近意义下成立，对每个有限的 `n` 并不成立；
 - 「超过两倍凯利必然缩水」在离散两结果模型里**不成立**——有具体数值反例（`p ≈ 0.104`、`R_W ≈ 17.7`、`|R_L| ≈ 0.05` 时 `g(2f*) ≈ +0.24 > 0`），必须改写成带条件的或渐近形式的命题。
 
-源推导文档在 DayTradingAgent 仓库：[notes/cumulative-return-derivation.md](https://github.com/xhqing/DayTradingAgent/blob/main/notes/cumulative-return-derivation.md)；两处评审发现的边界问题已在文档修订（2026-10-11）。
+源推导文档在 trading-agent 仓库：[notes/cumulative-return-derivation.md](https://github.com/xhqing/trading-agent/blob/main/notes/cumulative-return-derivation.md)；两处评审发现的边界问题已在文档修订（2026-10-11）。
 
 ## 进展（0.1.0）
 

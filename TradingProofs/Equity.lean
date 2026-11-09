@@ -10,7 +10,7 @@ public import Mathlib.Analysis.SpecialFunctions.Log.Basic
 /-!
 # Fixed-fraction equity and its product form
 
-Formalizes §1–2 of `notes/cumulative-return-derivation.md` in DayTradingAgent.
+Formalizes §1–2 of `notes/cumulative-return-derivation.md` in trading-agent.
 
 With risk fraction `f`, R-multiple sequence `R` and initial equity `W₀`, the equity
 after `n` trades is

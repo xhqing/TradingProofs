@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""两倍凯利边界的实算核对（DayTradingAgent `notes/cumulative-return-derivation.md` §7.3 修订用）
+"""两倍凯利边界的实算核对（trading-agent `notes/cumulative-return-derivation.md` §7.3 修订用）
 
 核实的两个数字：
   ① 文档例子（p=0.55, R_W=1.5, |R_L|=1）的精确 f*、g(2f*) 与真实临界点 f_c 的偏差；

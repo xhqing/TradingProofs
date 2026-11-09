@@ -1,5 +1,10 @@
 # Changelog
 
+### 变更（引用同步：Victor 项目更名为 trading-agent，2026-11-09）
+
+- **为什么改**：Victor 的 Agent 项目 2026-11-09 按新命名规定（agent 项目名一律 `<职责>-agent`、全小写）由 `DayTradingAgent` 更名为 `trading-agent`。本项目是该项目名下的子项目，README / AGENTS / 证明源码里指代主项目的名字与链接都要同步，否则文档链接会指向旧名。
+- **改了什么**：`README.md` / `README_cn.md` / `AGENTS.md` / `docs/proofs.md` / `TradingProofs/Equity.lean` / `TradingProofs/Growth.lean` / `scripts/twice-kelly-scan.py` 中的 `DayTradingAgent` → `trading-agent`（含 GitHub 链接；证明内容本身不变）。
+
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
