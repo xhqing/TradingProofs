@@ -9,6 +9,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### 变更（会话角色口径改为 agentLeader / subLeader / Worker 三级）
+
+- **为什么改**：2026-11-25 用户重新定义全团队 Leader / Worker 分工，由「Agent 项目根会话 = Leader、子项目会话 = Worker」的两级改为按「cwd 所在项目 + 当前分支」判定的三级：本项目主工作区 main = subLeader（只管自身项目：local main 快进、从自身 main 建删 worktree、派 Worker、合并自身 PR、发自身版本、回收 Worker）、本项目非 main 分支 worktree = Worker（只干当前 worktree 的活）；全局口径见 `~/.pi/agent/AGENTS.md`「Leader / Worker 的定义」节与 `~/.pi/agent/docs/agents-registry.md` 第 5 条。
+- **改了什么**：`AGENTS.md`「你的角色」节按三级重写——主工作区 main 分支是 subLeader（对上级 trading-agent 与其它子项目只读，要它们变就走 `agent_call` 或建 Issue）、非 main 分支 worktree 是 Worker；Worker 边界改写为「不碰 local main、不建删 worktree、不合并 PR、不发版，建删 worktree 与 ff 同步 local main 是 subLeader 的活、agentLeader 可代管」；规则索引表的「Leader / Worker 分工」改为「agentLeader / subLeader / Worker 三级分工」。
+- **回归风险**：无。纯文档口径更新，不涉及 Lean 源码、工具链与 CI。
+
 ### 新增（子项目专属硬规则 `.pi/APPEND_SYSTEM.md`，对齐 Leader / Worker 分工）
 
 - **为什么改**：团队 2026-11-07 用户定下全局 Leader / Worker 分工——Agent 项目根的会话是 Leader（同步子项目 local main、建 worktree、派任务、收尾），子项目根 / 子项目 worktree 的会话是 Worker（干具体的活）。Worker 启动时只加载「全局 + cwd 这一层」的上下文文件，所以子项目特有的硬规则必须写进本仓库自己的 `.pi/APPEND_SYSTEM.md` 才能被 Worker 读到；写进父项目 `AGENTS.md` 会污染其它子项目。此前的口径是「子项目规则以父项目会话为准」，Worker 模型下不再成立。
